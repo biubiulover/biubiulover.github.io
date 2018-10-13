@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gnbyj.cn/"/>
-  <updated>2018-07-25T04:50:30.472Z</updated>
+  <updated>2018-10-13T06:50:36.460Z</updated>
   <id>http://gnbyj.cn/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>将本地项目上传到Github</title>
+    <link href="http://gnbyj.cn/2018/10/13/Git/%E5%B0%86%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0%E5%88%B0Github/"/>
+    <id>http://gnbyj.cn/2018/10/13/Git/将本地项目上传到Github/</id>
+    <published>2018-10-13T06:50:00.000Z</published>
+    <updated>2018-10-13T06:50:36.460Z</updated>
+    
+    <content type="html"><![CDATA[<p># </p><ol><li><p><strong>进入Github首页，点击New repository新建一个项目</strong> </p><p><a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a> </p><p>Create a new repository</p></li></ol><ol start="2"><li><p><strong>点击Clone or dowload会出现一个地址，copy这个地址备用</strong> </p><p>Clone or download –&gt; copy “xxx.git”</p></li></ol><ol start="3"><li><p><strong>把github上面的仓库克隆到本地</strong></p><p>git clone <a href="https://github.com/xxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxx/xxx.git</a></p></li></ol><ol start="4"><li><p><strong>将项目上传到github</strong></p><p><strong>git add .</strong>        （注：别忘记后面的.，此操作是把文件夹下面的文件都添加进来）</p><p><strong>git commit  -m  “提交信息”</strong>  （注：“提交信息”里面换成你需要，如“first commit”）</p><p><strong>git push -u origin master</strong>   （注：此操作目的是把本地仓库push到Github上面，此步骤需要你输入帐号和密码）</p></li></ol><p>或者：</p><p>​    在项目文件夹输入“git init”，将当前文件夹加入git管理；</p><p>​    输入“git add .”（不要漏了“.”），将文件夹全部内容添加到git；</p><p>​    输入“git commit -m “first commit””（“git commit -m “提交信息”” ）；</p><p>​    输入“git remote add origin <a href="https://github.com/xxx/xxx.git“" target="_blank" rel="noopener">https://github.com/xxx/xxx.git“</a> ，连接你的Github仓库；</p><p>​    输入“git push -u origin master”，上传项目到Github。这里会要求输入Github的账号密码，按要                        求输入就可以。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;# &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;进入Github首页，点击New repository新建一个项目&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/new&quot; target=&quot;_blank&quot; rel=&quot;noope
+      
+    
+    </summary>
+    
+      <category term="Git" scheme="http://gnbyj.cn/categories/Git/"/>
+    
+    
+      <category term="Java Web" scheme="http://gnbyj.cn/tags/Java-Web/"/>
+    
+      <category term="Git" scheme="http://gnbyj.cn/tags/Git/"/>
+    
+      <category term="Github" scheme="http://gnbyj.cn/tags/Github/"/>
+    
+  </entry>
   
   <entry>
     <title>面向对象六大原则</title>
