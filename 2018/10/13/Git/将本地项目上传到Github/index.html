@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="BiuBiu">
 <meta property="og:description" content="进入Github首页，点击New repository新建一个项目  https://github.com/new  Create a new repository    点击Clone or dowload会出现一个地址，copy这个地址备用  Clone or download –&amp;gt; copy “xxx.git”    把github上面的仓库克隆到本地 git clone https">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-13T07:20:37.474Z">
+<meta property="og:updated_time" content="2018-10-14T16:10:24.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将本地项目上传到Github">
 <meta name="twitter:description" content="进入Github首页，点击New repository新建一个项目  https://github.com/new  Create a new repository    点击Clone or dowload会出现一个地址，copy这个地址备用  Clone or download –&amp;gt; copy “xxx.git”    把github上面的仓库克隆到本地 git clone https">
@@ -453,10 +453,11 @@
 <p><strong>git push -u origin master</strong>   （注：此操作目的是把本地仓库push到Github上面，此步骤需要你输入帐号和密码）</p>
 <p>或者：</p>
 <p>在项目文件夹输入“git init”，将当前文件夹加入git管理；</p>
-<p>输入“<strong>git add .</strong>”（不要漏了“.”），将文件夹全部内容添加到git；</p>
-<p>输入“<strong>git commit -m “first commit”</strong>”（“git commit -m “提交信息”” ）；</p>
-<p>输入“<strong>git remote add origin <a href="https://github.com/xxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxx/xxx.git</a></strong>“ ，连接你的Github仓库；</p>
-<p>输入“<strong>git push -u origin master</strong>”，上传项目到Github，或要求输入Github的账号密码。</p>
+<p><strong>git add .</strong>（不要漏了“.”，或文件名），将文件夹全部内容添加到git；</p>
+<p><strong>git commit -m “first commit”</strong>（“git commit -m “提交信息”” ）；</p>
+<p><strong>git remote add origin <a href="https://github.com/xxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxx/xxx.git</a> </strong> 连接你的Github仓库；</p>
+<p><strong>git pull origin master</strong> 把本地仓库的变化连接到远程仓库主分支；</p>
+<p><strong>git push (-f) -u origin master</strong> 上传项目到Github，或要求输入Github的账号密码。-f 强制推送，-u初次推送使用。</p>
 </li>
 </ol>
 
