@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gnbyj.cn/"/>
-  <updated>2018-10-14T16:10:24.760Z</updated>
+  <updated>2018-10-15T14:58:02.912Z</updated>
   <id>http://gnbyj.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python 读取文本文件</title>
+    <link href="http://gnbyj.cn/2018/10/15/%E7%88%AC%E8%99%AB/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/"/>
+    <id>http://gnbyj.cn/2018/10/15/爬虫/文本处理/</id>
+    <published>2018-10-15T15:00:00.000Z</published>
+    <updated>2018-10-15T14:58:02.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python的文本处理是经常碰到的一个问题，Python的文本文件的内容读取中，有三类方法：<strong>read()、readline()、readlines()</strong>，这三种方法各有利弊，下面逐一介绍其使用方法和利弊。</p><h5 id="read-："><a href="#read-：" class="headerlink" title="read()："></a>read()：</h5><ul><li><p>read()是最简单的一种方法，一次性读取文件的所有内容放在一个大字符串中，即存在内存中</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">file_object = open(<span class="string">'test.txt'</span>) //不要把open放在<span class="keyword">try</span>中，以防止打开失败，那么就不用关闭了</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    file_context = file_object.read() //file_context是一个string，读取完后，就失去了对test.txt的文件引用</span><br><span class="line">    <span class="comment">#  file_context = open(file).read().splitlines() </span></span><br><span class="line">    // file_context是一个list，每行文本内容是list中的一个元素</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file_object.close()</span><br><span class="line">//除了以上方法，也可用<span class="keyword">with</span>、contextlib都可以打开文件，且自动关闭文件，</span><br><span class="line">//以防止打开的文件对象未关闭而占用内存</span><br></pre></td></tr></table></figure></li><li><p><strong>read()的利端</strong>：</p><ul><li>方便、简单</li><li>一次性独读出文件放在一个大字符串中，速度最快</li></ul></li><li><p><strong>read()的弊端</strong>：</p><ul><li>文件过大的时候，占用内存会过大</li></ul></li></ul><h5 id="readline-："><a href="#readline-：" class="headerlink" title="readline()："></a>readline()：</h5><ul><li><p><strong>readline()</strong>逐行读取文本，结果是一个list</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file) <span class="keyword">as</span> f:</span><br><span class="line">    line = f.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        <span class="keyword">print</span> line</span><br><span class="line">        line = f.readline()</span><br></pre></td></tr></table></figure></li><li><p><strong>readline()的利端</strong>：</p><ul><li>占用内存小，逐行读取</li></ul></li><li><p><strong>readline()的弊端</strong>：</p><ul><li>由于是逐行读取，速度比较慢</li></ul></li></ul><h5 id="readlines-："><a href="#readlines-：" class="headerlink" title="readlines()："></a>readlines()：</h5><ul><li><p>readlines()一次性读取文本的所有内容，结果是一个list</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file) <span class="keyword">as</span> f:</span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">     <span class="keyword">print</span> line</span><br></pre></td></tr></table></figure><ul><li>这种方法读取的文本内容，每行文本末尾都会带一个<strong>‘\n’</strong>换行符 (可以使用L.rstrip(‘\n’)去掉换行符）</li></ul></li><li><p><strong>readlines()的利端</strong>：</p><ul><li>一次性读取文本内容，速度比较快</li></ul></li><li><p><strong>readlines()的弊端</strong>：</p><ul><li>随着文本的增大，占用内存会越来越多</li></ul></li></ul><h4 id="最简单、最快速的逐行处理文本的方法：直接for循环文件对象"><a href="#最简单、最快速的逐行处理文本的方法：直接for循环文件对象" class="headerlink" title="最简单、最快速的逐行处理文本的方法：直接for循环文件对象"></a>最简单、最快速的逐行处理文本的方法：直接for循环文件对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">file_object = open(<span class="string">'test.txt'</span>,<span class="string">'rU'</span>)</span><br><span class="line"><span class="keyword">try</span>: </span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> file_object:</span><br><span class="line">         do_somthing_with(line)//line带<span class="string">"\n"</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">     file_object.close()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Python的文本处理是经常碰到的一个问题，Python的文本文件的内容读取中，有三类方法：&lt;strong&gt;read()、readline()、readlines()&lt;/strong&gt;，这三种方法各有利弊，下面逐一介绍其使用方法和利弊。&lt;/p&gt;
+&lt;h5 id=&quot;read-：
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://gnbyj.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://gnbyj.cn/tags/python/"/>
+    
+      <category term="scrapy" scheme="http://gnbyj.cn/tags/scrapy/"/>
+    
+  </entry>
   
   <entry>
     <title>将本地项目上传到Github</title>
