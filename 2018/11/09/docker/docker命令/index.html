@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="BiuBiu">
 <meta property="og:description" content="镜像 命令镜像仓库searchSearch the Docker Hub for images–从Docker Hub中搜索镜像 pullPull an image or a repository from a registry–从docker hub中下载镜像 pushPush an image or a repository to a registry–将本地的镜像上传到docker hub中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-09T10:04:51.190Z">
+<meta property="og:updated_time" content="2018-11-10T04:13:10.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker命令大全">
 <meta name="twitter:description" content="镜像 命令镜像仓库searchSearch the Docker Hub for images–从Docker Hub中搜索镜像 pullPull an image or a repository from a registry–从docker hub中下载镜像 pushPush an image or a repository to a registry–将本地的镜像上传到docker hub中">
@@ -481,7 +481,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1&gt; 运行一个交互型容器</span><br><span class="line">[root@localhost ~]<span class="comment"># docker run -i -t centos /bin/bash</span></span><br><span class="line">[root@f0a02b473067 /]<span class="comment"># </span></span><br><span class="line">2&gt; 在另一个窗口上查看该容器的状态</span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps -a</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS      PORTS       NAMES</span><br><span class="line">d4a75f165ce6        centos              <span class="string">"/bin/bash"</span>         5 seconds ago       Up 5 seconds       cranky_mahavira</span><br><span class="line">3&gt; 退出第一步中运行的容器</span><br><span class="line">[root@d4a75f165ce6 /]<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">4&gt; 查看该容器的状态</span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps -a</span></span><br><span class="line">CONTAINER ID        IMAGE           COMMAND           CREATED             STATUS                  PORTS    NAMES</span><br><span class="line">d4a75f165ce6        centos          <span class="string">"/bin/bash"</span>       2 minutes ago       Exited (0) 23 seconds ago        cranky_mahavira</span><br><span class="line">可见此时容器的状态是Exited，那么，如何再次运行这个容器呢？可以使用docker start命令</span><br><span class="line">5&gt; 再次运行该容器</span><br><span class="line">[root@localhost ~]<span class="comment"># docker start cranky_mahavira</span></span><br><span class="line">cranky_mahavira</span><br><span class="line">6&gt; 再次查看该容器的状态</span><br><span class="line">[root@localhost ~]<span class="comment"># docker ps -a</span></span><br><span class="line">CONTAINER ID        IMAGE          COMMAND             CREATED             STATUS              PORTS      NAMES</span><br><span class="line">d4a75f165ce6        centos         <span class="string">"/bin/bash"</span>         6 minutes ago       Up 29 seconds                  cranky_mahavira</span><br><span class="line">因为该容器是交互型的，但此刻我们发现没有具体的终端可以与之交互，这时可使用attach命令。</span><br><span class="line">7&gt; 通过attach命令进行交互</span><br><span class="line">[root@localhost ~]<span class="comment"># docker attach cranky_mahavira</span></span><br><span class="line">[root@d4a75f165ce6 /]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>Display the running processes of a container<br>–查看容器中正在运行的进程</p>
 <h3 id="logs"><a href="#logs" class="headerlink" title="logs"></a>logs</h3><p>Fetch the logs of a container<br>–用于查看容器的日志，它将输出到标准输出的数据作为日志输出到docker logs命令的终端上。常用于后台型容器。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker logs [ID或者名字]</span><br><span class="line">docker logs -f bf08b7f2cd89</span><br><span class="line">-f: 让 docker logs 像使用 tail -f 一样来输出容器内部的标准输出。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker logs [ID或者名字]</span><br><span class="line">docker logs -f bf08b7f2cd89</span><br><span class="line">-f: 让 docker logs 像使用 tail -f 一样来输出容器内部的标准输出。</span><br><span class="line"></span><br><span class="line">查看指定时间后的日志，只显示最后100行：</span><br><span class="line">$ docker logs -f -t --since=<span class="string">"2018-02-08"</span> --tail=100 CONTAINER_ID</span><br><span class="line">查看最近30分钟的日志:</span><br><span class="line">$ docker logs --since 30m CONTAINER_ID</span><br><span class="line">查看某时间之后的日志：</span><br><span class="line">$ docker logs -t --since=<span class="string">"2018-02-08T13:23:37"</span> CONTAINER_ID</span><br><span class="line">查看某时间段日志：</span><br><span class="line">$ docker logs -t --since=<span class="string">"2018-02-08T13:23:37"</span> --until <span class="string">"2018-02-09T12:23:37"</span> CONTAINER_ID</span><br></pre></td></tr></table></figure>
 <h3 id="port"><a href="#port" class="headerlink" title="port"></a>port</h3><p>List port mappings or a specific mapping for the CONTAINER<br>–输出容器端口与宿主机端口的映射情况</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># docker port [NAMES]</span></span><br><span class="line">80/tcp -&gt; 0.0.0.0:80</span><br><span class="line">容器[NAMES]的内部端口80映射到宿主机的80端口，这样可通过宿主机的80端口查看容器[NAMES]提供的服务</span><br></pre></td></tr></table></figure>
 <h3 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h3><p>Block until a container stops, then print its exit code<br>–捕捉容器停止时的退出码</p>
@@ -663,7 +663,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,7 +674,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -685,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
