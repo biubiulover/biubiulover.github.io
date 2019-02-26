@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)； 定义 (路由) 组件，可以从其他文件import进来； 定义路由，每个路由映射一个组件 创建router实例，传入routes配置 创建和挂载根实例，注入路由router  通过 this.$router 访问路由器，也可以通过 this.$route">
+<meta name="description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        comp">
 <meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue-Router">
 <meta property="og:url" content="http://gnbyj.cn/2019/02/26/[2019-02-26]Vue-Router/index.html">
 <meta property="og:site_name" content="BiuBiu">
-<meta property="og:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)； 定义 (路由) 组件，可以从其他文件import进来； 定义路由，每个路由映射一个组件 创建router实例，传入routes配置 创建和挂载根实例，注入路由router  通过 this.$router 访问路由器，也可以通过 this.$route">
+<meta property="og:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        comp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T05:39:48.514Z">
+<meta property="og:updated_time" content="2019-02-26T16:42:20.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue-Router">
-<meta name="twitter:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)； 定义 (路由) 组件，可以从其他文件import进来； 定义路由，每个路由映射一个组件 创建router实例，传入routes配置 创建和挂载根实例，注入路由router  通过 this.$router 访问路由器，也可以通过 this.$route">
+<meta name="twitter:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        comp">
 
 
 
@@ -443,12 +443,33 @@
       
         <p>Vue + Vue-Router步骤：</p>
 <ol>
-<li>如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；</li>
-<li>定义 (路由) 组件，可以从其他文件import进来；</li>
-<li>定义路由，每个路由映射一个组件</li>
-<li>创建router实例，传入routes配置</li>
-<li>创建和挂载根实例，注入路由router</li>
+<li><p>如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；</p>
+</li>
+<li><p>定义 (路由) 组件，可以从其他文件import进来；</p>
+</li>
+<li><p>定义路由，每个路由映射一个组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Routers = [</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/index'</span>, <span class="comment">// 匹配路径</span></span><br><span class="line">        component: <span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">require</span>([<span class="string">'./views/index.vue'</span>], resolve) <span class="comment">// 映射组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/about'</span>,</span><br><span class="line">        component: <span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">require</span>([<span class="string">'./views/about.vue'</span>], resolve)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>require.ensure()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Province = <span class="function"><span class="params">r</span> =&gt;</span> <span class="built_in">require</span>.ensure([], () =&gt; r(<span class="built_in">require</span>(<span class="string">'@/components/Province.vue'</span>)), <span class="string">'chunkname1'</span>)</span><br><span class="line"><span class="keyword">const</span> Segment = <span class="function"><span class="params">r</span> =&gt;</span> <span class="built_in">require</span>.ensure([], () =&gt; r(<span class="built_in">require</span>(<span class="string">'@/components/Segment.vue'</span>)), <span class="string">'chunkname2'</span>)</span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function"><span class="params">r</span> =&gt;</span> <span class="built_in">require</span>.ensure([], () =&gt; r(<span class="built_in">require</span>(<span class="string">'@/components/Loading.vue'</span>)), <span class="string">'chunkname3'</span>)</span><br><span class="line"><span class="keyword">const</span> User = <span class="function"><span class="params">r</span> =&gt;</span> <span class="built_in">require</span>.ensure([], () =&gt; r(<span class="built_in">require</span>(<span class="string">'@/components/User.vue'</span>)), <span class="string">'chunkname3'</span>)</span><br></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://blog.csdn.net/qq_27626333/article/details/76228578" target="_blank" rel="noopener">https://blog.csdn.net/qq_27626333/article/details/76228578</a></p>
+</li>
 </ol>
+<ol start="4">
+<li><p>创建router实例，传入routes配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> RouterConfig = &#123;</span><br><span class="line">    mode: <span class="string">'history'</span>, <span class="comment">// 不配置mode，用 # 来设置路径</span></span><br><span class="line">    routes: Routes</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(RouterConfig)</span><br></pre></td></tr></table></figure>
+<p>开启History路由，需将所有路由指向同一个html，webpack修改package.json文件，添加<code>--history-api-fallback</code></p>
+</li>
+</ol>
+<ol start="5">
+<li><p>创建和挂载根实例，注入路由router</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el: <span class="string">'#app'</span>,</span><br><span class="line">	router</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>&lt;router-view/&gt;</code> 路由视图，用于挂载路由组件</p>
+<p>跳转（2种方法）</p>
+<p><code>&lt;router-link to=&quot;/index&quot;&gt;go to index&lt;/router-link&gt;</code>，被渲染未\&lt;a>标签</p>
+<p>prop：tag/replace/active-class</p>
+<p><code>this.$router.push()/replace()/go()</code></p>
 <p>通过 <code>this.$router</code> 访问路由器，也可以通过 <code>this.$route</code> 访问当前路由</p>
 <p>编程式导航</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.push(<span class="string">'home'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'home'</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名路由，在创建 Router 实例的时候，在 routes 配置中给某个路由设置名称name。</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="string">'123'</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带查询参数，变成 /register?plan=private</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'register'</span>, <span class="attr">query</span>: &#123; <span class="attr">plan</span>: <span class="string">'private'</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果提供了 path，params 会被忽略</span></span><br></pre></td></tr></table></figure>
@@ -460,6 +481,14 @@
 <p><strong>组件</strong>内守卫 <code>beforeRouteEnter(to, from, next){ //... }</code>不能访问this，可<code>next(vm =&gt; { //vm访问组件实例 })</code></p>
 <p><code>beforeRouteUpdate(to, from, next){ //... }</code></p>
 <p><code>beforeRouteLeave(to, from, next){ //... }</code></p>
+<blockquote>
+<p>to: 即将进入的目标路由对象</p>
+<p>from: 当前导航即将要离开的路由对象</p>
+<p>next: 调用后才会进入下一个钩子</p>
+</blockquote>
+<p>改变标题，用到<code>router.beforeEach((to, from, next) =&gt; {var title = to.meta.title; next();})</code></p>
+<p>设置滚动条位置，<code>window.scrollTo(0,0)</code></p>
+<p>校验是否登录，已登录调用<code>next()</code>，未登录<code>next(&#39;\login&#39;)</code>或<code>next(false)</code></p>
 <p>完整的导航解析流程</p>
 <ol>
 <li>导航被触发。</li>
@@ -542,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/26/[2019-02-26]Windows系统解决端口被占用/" rel="next" title="Windows解决端口占用问题">
-                <i class="fa fa-chevron-left"></i> Windows解决端口占用问题
+              <a href="/2019/02/26/[2019-02-26]Vue组件/" rel="next" title="Vue组件">
+                <i class="fa fa-chevron-left"></i> Vue组件
               </a>
             
           </div>
@@ -626,7 +655,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -637,7 +666,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -648,7 +677,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
