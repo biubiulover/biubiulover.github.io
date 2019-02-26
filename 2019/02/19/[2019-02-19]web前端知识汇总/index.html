@@ -116,7 +116,7 @@
 <meta property="og:description" content="精通浏览器兼容性调优(参考：https://blog.csdn.net/garvisjack/article/details/69939203) 浏览器兼容性品牌Chrome FireFox IE等/运行平台windows MAC Android IOS/内核webkit gecko/屏幕分辨率/版本等； 内核：Trident(IE系)/Gecko(Firefox)/Presto/Webkit(S">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://gnbyj.cn/2019/02/19/[2019-02-19]web前端知识汇总/images/screenshot_1548660473340.png">
-<meta property="og:updated_time" content="2019-02-22T01:38:41.739Z">
+<meta property="og:updated_time" content="2019-02-26T08:35:42.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web前端开发知识汇总">
 <meta name="twitter:description" content="精通浏览器兼容性调优(参考：https://blog.csdn.net/garvisjack/article/details/69939203) 浏览器兼容性品牌Chrome FireFox IE等/运行平台windows MAC Android IOS/内核webkit gecko/屏幕分辨率/版本等； 内核：Trident(IE系)/Gecko(Firefox)/Presto/Webkit(S">
@@ -716,6 +716,11 @@
 <h3 id="jquery-ajax"><a href="#jquery-ajax" class="headerlink" title="jquery ajax"></a>jquery ajax</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type:<span class="string">"GET"</span>,</span><br><span class="line">    url:<span class="string">"service.php?number="</span>+$(<span class="string">"#keyword"</span>).val(),</span><br><span class="line">    dataType:<span class="string">"json"</span>, <span class="comment">// 预期服务器返回数据的类型，可以为xml,html,script,json,jsonp,text</span></span><br><span class="line">    cache:<span class="string">"true"</span>,<span class="comment">//dataType 为 script 和 jsonp 时默认为 false，不缓存页面。</span></span><br><span class="line">    processData:<span class="string">"false"</span>,<span class="comment">//false:不转化对象为查询字符串</span></span><br><span class="line">    ifModified:<span class="string">"true"</span>,<span class="comment">//如果希望判断数据自从上次请求后没有更改过就报告出错的话</span></span><br><span class="line">    <span class="comment">// 如果要处理 $.ajax() 得到的数据，则需要使用回调函数</span></span><br><span class="line">    beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params">jqxhr</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 可修改 XMLHttpRequest 对象,如添加自定义 HTTP 头</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 在请求成功之后调用。传入返回的数据以及 "dataType" 参数的值。</span></span><br><span class="line">    dataFilter:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    <span class="comment">// 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。</span></span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(data.success)&#123;</span><br><span class="line">            $(<span class="string">"searchResult"</span>).html(data.msg);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $(<span class="string">"#searchResult"</span>).html(<span class="string">"出现错误："</span> + data.msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象（如果有的话）</span></span><br><span class="line">    error:<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR</span>)</span>&#123;</span><br><span class="line">        aler(<span class="string">"发生错误："</span>+ jqXHR.status);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 当请求完成之后调用这个函数，无论成功或失败。传入 XMLHttpRequest 对象，以及一个包含成功或错误代码的字符串。</span></span><br><span class="line">    complete:<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR,TS</span>)</span>&#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果获取的数据文件存放在远程服务器上（域名不同，也就是跨域获取数据），则需要使用 jsonp 类型。使用这种类型的话，会创建一个查询字符串参数 callback=? ，这个参数会加在请求的 URL 后面。服务器端应当在 JSON 数据前加上回调函数名，以便完成一个有效的 JSONP 请求。如果要指定回调函数的参数名来取代默认的 callback，可以通过设置 $.ajax() 的 jsonp 参数。 </p>
+</blockquote>
+<p><code>contentType</code>与<code>dataType</code>的区别：</p>
+<blockquote>
+<p><code>contentType</code>: 发送信息至服务器时内容编码类型，告诉服务器，请求数据的类型，默认值: <code>&quot;application/x-www-form-urlencoded&quot;</code></p>
+<p><code>dataType</code>：告诉服务器，我要想什么类型的响应数据，除了常见的json、XML，还可以指定 html、jsonp、script或者text</p>
 </blockquote>
 <h3 id="Ajax解决缓存的5种方法总结"><a href="#Ajax解决缓存的5种方法总结" class="headerlink" title="Ajax解决缓存的5种方法总结"></a>Ajax解决缓存的5种方法总结</h3><ol>
 <li>在ajax发送请求前加上 anyAjaxObj.setRequestHeader(“If-Modified-Since”,”0″)。</li>
@@ -1415,7 +1420,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1426,7 +1431,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1437,7 +1442,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
