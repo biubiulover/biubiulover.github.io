@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="新的变量声明方式 let/const使用let来声明一个【值会被改变】的变量 使用const来声明一个【值不会被改变】的变量，也可以称之为常量  箭头函数的使用箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。  不能用call/apply/bind来改变this指向。   ES6 默认采用严格模式，this不会自动指向window对象">
+<meta name="description" content="http://es6.ruanyifeng.com   新的变量声明方式 let/const使用let来声明一个【值会被改变】的变量 使用const来声明一个【值不会被改变】的变量，也可以称之为常量  箭头函数的使用箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。  不能用call/apply/bind来改变this指向。   ES6 默">
 <meta name="keywords" content="es6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6">
 <meta property="og:url" content="http://gnbyj.cn/2019/02/27/[2019-02-27]ES6/index.html">
 <meta property="og:site_name" content="BiuBiu">
-<meta property="og:description" content="新的变量声明方式 let/const使用let来声明一个【值会被改变】的变量 使用const来声明一个【值不会被改变】的变量，也可以称之为常量  箭头函数的使用箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。  不能用call/apply/bind来改变this指向。   ES6 默认采用严格模式，this不会自动指向window对象">
+<meta property="og:description" content="http://es6.ruanyifeng.com   新的变量声明方式 let/const使用let来声明一个【值会被改变】的变量 使用const来声明一个【值不会被改变】的变量，也可以称之为常量  箭头函数的使用箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。  不能用call/apply/bind来改变this指向。   ES6 默">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T01:37:41.076Z">
+<meta property="og:updated_time" content="2019-02-27T08:09:24.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
-<meta name="twitter:description" content="新的变量声明方式 let/const使用let来声明一个【值会被改变】的变量 使用const来声明一个【值不会被改变】的变量，也可以称之为常量  箭头函数的使用箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。  不能用call/apply/bind来改变this指向。   ES6 默认采用严格模式，this不会自动指向window对象">
+<meta name="twitter:description" content="http://es6.ruanyifeng.com   新的变量声明方式 let/const使用let来声明一个【值会被改变】的变量 使用const来声明一个【值不会被改变】的变量，也可以称之为常量  箭头函数的使用箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。  不能用call/apply/bind来改变this指向。   ES6 默">
 
 
 
@@ -430,7 +430,10 @@
       
 
       
-        <ol>
+        <blockquote>
+<p><a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">http://es6.ruanyifeng.com</a></p>
+</blockquote>
+<ol>
 <li><h5 id="新的变量声明方式-let-const"><a href="#新的变量声明方式-let-const" class="headerlink" title="新的变量声明方式 let/const"></a>新的变量声明方式 let/const</h5><p>使用let来声明一个【值会被改变】的变量</p>
 <p>使用const来声明一个【值不会被改变】的变量，也可以称之为常量</p>
 </li>
@@ -443,8 +446,16 @@
 <li><h5 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h5><p>使用 <code></code> 将整个字符串包裹起来，而在其中使用 ${} 来包裹一个变量或者一个表达式。 </p>
 <p>支持换行</p>
 </li>
-<li><h5 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h5><p>数组以序列号一一对应，这是一个有序的对应关系。</p>
-<p>而对象根据属性名一一对应，这是一个无序的对应关系。 </p>
+<li><p>数组的扩展</p>
+<p>扩展运算符（spread）是三个点（<code>...</code>） </p>
+<p>将一个数组转为用逗号分隔的参数序列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]);</span><br><span class="line"><span class="comment">// 1 2 3 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>every() / some()</p>
+<blockquote>
+<p>every() 一假即假</p>
+<p>some() 一真即真</p>
+</blockquote>
 </li>
 </ol>
 
@@ -719,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#新的变量声明方式-let-const"><span class="nav-number">1.</span> <span class="nav-text">新的变量声明方式 let/const</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#箭头函数的使用"><span class="nav-number">2.</span> <span class="nav-text">箭头函数的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模板字符串"><span class="nav-number">3.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解构赋值"><span class="nav-number">4.</span> <span class="nav-text">解构赋值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#新的变量声明方式-let-const"><span class="nav-number">1.</span> <span class="nav-text">新的变量声明方式 let/const</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#箭头函数的使用"><span class="nav-number">2.</span> <span class="nav-text">箭头函数的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模板字符串"><span class="nav-number">3.</span> <span class="nav-text">模板字符串</span></a></li></ol></div>
             
 
           </div>

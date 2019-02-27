@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="BiuBiu">
 <meta property="og:description" content="AJAX——Asynchronous JavaScript and XML 一种创建交互式网页应用的网页开发技术 客户端与服务器，可以在【不刷新整个浏览器】的情况下，与服务器进行异步通讯 传统Web应用——Servlet通过转发把数据发送给浏览器，直发服务器 AJAX——服务器并不是以转发的方式响应，而是以流的方式把数据返回给浏览器，经过XHR封装  XMLHttpRequest异步对象会不停监听">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T10:21:42.296Z">
+<meta property="og:updated_time" content="2019-02-27T07:19:01.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax">
 <meta name="twitter:description" content="AJAX——Asynchronous JavaScript and XML 一种创建交互式网页应用的网页开发技术 客户端与服务器，可以在【不刷新整个浏览器】的情况下，与服务器进行异步通讯 传统Web应用——Servlet通过转发把数据发送给浏览器，直发服务器 AJAX——服务器并不是以转发的方式响应，而是以流的方式把数据返回给浏览器，经过XHR封装  XMLHttpRequest异步对象会不停监听">
@@ -485,6 +485,7 @@
 <li>在URL后面加上时间戳：<code>&quot;nowtime=&quot; + new Date().getTime();</code></li>
 <li>如果是使用jQuery，直接这样就可以了 <code>$.ajaxSetup({cache:false})</code></li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajaxSetup(&#123;</span><br><span class="line">    beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	<span class="comment">//每次ajax请求前执行的操作;</span></span><br><span class="line">	&#125;,</span><br><span class="line">    complete:<span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest,textStatus</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//判断cookie中存储cookie的时间是否临近超时时刻了</span></span><br><span class="line">        <span class="comment">//如果临近的话  发送刷新token的请求; 存储新的token并且记录当前时刻</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
