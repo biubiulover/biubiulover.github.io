@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        comp">
+<meta name="description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        compo">
 <meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue-Router">
 <meta property="og:url" content="http://gnbyj.cn/2019/02/26/[2019-02-26]Vue-Router/index.html">
 <meta property="og:site_name" content="BiuBiu">
-<meta property="og:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        comp">
+<meta property="og:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        compo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T16:42:20.435Z">
+<meta property="og:updated_time" content="2019-02-27T01:10:54.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue-Router">
-<meta name="twitter:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        comp">
+<meta name="twitter:description" content="Vue + Vue-Router步骤：  如果使用模块化机制编程，导入Vue和VueRouter，调用 Vue.use(VueRouter)；  定义 (路由) 组件，可以从其他文件import进来；  定义路由，每个路由映射一个组件 12345678910const Routers = [    &amp;#123;        path: &apos;/index&apos;, // 匹配路径        compo">
 
 
 
@@ -443,7 +443,7 @@
       
         <p>Vue + Vue-Router步骤：</p>
 <ol>
-<li><p>如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)；</p>
+<li><p>如果使用模块化机制编程，导入Vue和VueRouter，调用 Vue.use(VueRouter)；</p>
 </li>
 <li><p>定义 (路由) 组件，可以从其他文件import进来；</p>
 </li>
@@ -471,6 +471,9 @@
 <p>prop：tag/replace/active-class</p>
 <p><code>this.$router.push()/replace()/go()</code></p>
 <p>通过 <code>this.$router</code> 访问路由器，也可以通过 <code>this.$route</code> 访问当前路由</p>
+<blockquote>
+<p><strong>Vue 路由中 $route 和 $router 的区别</strong><br>$route是“路由信息“对象，包括path，params，hash，query，fullPath，matched，name等路由信息参数。<br>$router是“路由实例”对象，包括路由的跳转方法，钩子函数等。</p>
+</blockquote>
 <p>编程式导航</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.push(<span class="string">'home'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'home'</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名路由，在创建 Router 实例的时候，在 routes 配置中给某个路由设置名称name。</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="string">'123'</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带查询参数，变成 /register?plan=private</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'register'</span>, <span class="attr">query</span>: &#123; <span class="attr">plan</span>: <span class="string">'private'</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果提供了 path，params 会被忽略</span></span><br></pre></td></tr></table></figure>
 <p>导航守卫</p>
@@ -655,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -677,7 +680,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
