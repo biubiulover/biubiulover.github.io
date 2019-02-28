@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gnbyj.cn/"/>
-  <updated>2019-02-27T08:04:06.068Z</updated>
+  <updated>2019-02-28T09:59:39.140Z</updated>
   <id>http://gnbyj.cn/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack</title>
+    <link href="http://gnbyj.cn/2019/02/28/%5B2019-02-28%5Dwebpack/"/>
+    <id>http://gnbyj.cn/2019/02/28/[2019-02-28]webpack/</id>
+    <published>2019-02-28T04:10:00.000Z</published>
+    <updated>2019-02-28T09:59:39.140Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>FED - webpack流程 <a href="http://taobaofed.org/blog/2016/09/09/webpack-flow/" target="_blank" rel="noopener">http://taobaofed.org/blog/2016/09/09/webpack-flow/</a></p></blockquote><ol><li>读取文件分析模块依赖</li><li>对模块进行解析执行(深度遍历)</li><li>针对不同的模块使用相应的loader</li><li>编译模块，生成抽象语法树AST</li><li>循环遍历AST树，拼接输出js</li></ol><hr><blockquote><p><a href="https://blog.csdn.net/qq_26708777/article/details/79210549" target="_blank" rel="noopener">https://blog.csdn.net/qq_26708777/article/details/79210549</a></p></blockquote><p>webpack-parallel-uglify-plugin</p><p>会开启多个子进程，把对多个文件压缩的工作分别给多个子进程去完成，但是每个子进程还是通过UglifyJS去压缩代码。无非就是变成了并行处理该压缩了，并行处理多个子任务，效率会更加的提高。</p><blockquote><p>压缩慢：因为压缩JS代码需要先把代码解析成用Object抽象表示的AST语法树，再去应用各种规则分析和处理AST，导致这个过程耗时非常大。</p></blockquote><p>compression-webpack-plugin </p><p>该插件能够将资源文件压缩为.gz文件，并且根据客户端的需求按需加载。 </p><p>extract-text-webpack-plugin</p><p>剥离css文件，单独打包</p><p>html-webpack-plugin </p><p>开启html压缩，自动添加上面生成的静态资源</p><p>CommonsChunkPlugin</p><p>这个插件用来提取公共的module到独立的chunk文件里。</p><p>webpack-bundle-analyzer</p><p>将打包后的内容束展示为方便交互的直观树状图，让你明白你所构建包中真正引入的内容</p><p>copy-webpack-plugin</p><p>在webpack中拷贝文件和文件夹 </p><hr><p>模块化拆分打包</p><ol><li>利用glob库匹配出所有模块的入口文件，得到一个数组；</li><li>遍历数组拿到路径，提取路径中模块名，将二者维护进对象中；</li><li>遍历这个对象的key(即模块名)，如果与命令相同，则赋值给入口变量；</li></ol><hr><p>整体打包</p><ol><li>利用glob库匹配出所有模块的入口文件，得到一个数组；</li><li>将数组切分为4个一组；</li><li>开启子进程，遍历数组拿到模块名，使用<code>child_process.spawn(command)</code>运行打包命令</li></ol><hr><p><a href="https://segmentfault.com/a/1190000012113011" target="_blank" rel="noopener">webpack externals 深入理解</a></p><p>按照官方文档的解释，如果我们想引用一个库，但是又不想让webpack打包，并且又不影响我们在程序中以CMD、AMD或者window/global全局等方式进行使用，那就可以通过配置externals。</p><p>这个功能主要是用在创建一个库的时候用的，但是也可以在我们项目开发中充分使用。 </p><blockquote><p>如果你写的库要支持各种环境，你需要设置output中的libraryTarget为umd，也就是将打包的文件，生成为umd规范，适用于各种环境。libraryTarget和externals有藕断丝连的关系 </p></blockquote><p><code>externals</code>和<code>libraryTarget</code>的关系</p><ul><li>libraryTarget 配置如何暴露 library。如果不设置library，那这个library就不暴露。就相当于一个自执行函数</li><li>externals是决定的是以哪种模式去加载所引入的额外的包</li><li>libraryTarget决定了你的library运行在哪个环境，哪个环境也就决定了你哪种模式去加载所引入的额外的包。也就是说，externals应该和libraryTarget保持一致。library运行在浏览器中的，你设置externals的模式为commonjs，那代码肯定就运行不了了。</li><li>如果是应用程序开发，一般是运行在浏览器环境libraryTarget可以不设置，externals默认的模式是global，也就是以全局变量的模式加载所引入外部的库。</li></ul><hr><blockquote><p>webpack devtool类型对比</p><p><a href="https://www.cnblogs.com/hhhyaaon/p/5657469.html" target="_blank" rel="noopener">https://www.cnblogs.com/hhhyaaon/p/5657469.html</a></p></blockquote><p>开发环境推荐： <code>cheap-module-eval-source-map</code> </p><p>生产环境推荐： <code>cheap-module-source-map</code> </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;FED - webpack流程 &lt;a href=&quot;http://taobaofed.org/blog/2016/09/09/webpack-flow/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://taobaofed
+      
+    
+    </summary>
+    
+      <category term="web" scheme="http://gnbyj.cn/categories/web/"/>
+    
+    
+      <category term="webpack" scheme="http://gnbyj.cn/tags/webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6</title>
+    <link href="http://gnbyj.cn/2019/02/27/%5B2019-02-27%5DES6/"/>
+    <id>http://gnbyj.cn/2019/02/27/[2019-02-27]ES6/</id>
+    <published>2019-02-27T01:10:00.000Z</published>
+    <updated>2019-02-28T14:31:37.490Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">http://es6.ruanyifeng.com</a></p></blockquote><ol><li><h5 id="新的变量声明方式-let-const"><a href="#新的变量声明方式-let-const" class="headerlink" title="新的变量声明方式 let/const"></a>新的变量声明方式 let/const</h5><p>使用let来声明一个【值会被改变】的变量</p><p>使用const来声明一个【值不会被改变】的变量，也可以称之为常量</p><blockquote><p>ES6 声明变量的六种方法</p><p>ES5 只有两种声明变量的方法：<code>var</code>命令和<code>function</code>命令。</p><p>ES6 除了添加<code>let</code>和<code>const</code>命令，</p><p>另外两种声明变量的方法：<code>import</code>命令和<code>class</code>命令。</p><p>所以，ES6 一共有 6 种声明变量的方法。</p></blockquote></li></ol><ol start="2"><li><h5 id="箭头函数的使用"><a href="#箭头函数的使用" class="headerlink" title="箭头函数的使用"></a>箭头函数的使用</h5><p>箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。 </p><p>不能用call/apply/bind来改变this指向。 </p><blockquote><p>ES6 默认采用严格模式，this不会自动指向window对象</p></blockquote></li></ol><ol start="3"><li><h5 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h5><p>使用 <code></code> 将整个字符串包裹起来，而在其中使用 ${} 来包裹一个变量或者一个表达式。 </p><p>支持换行</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">const</span> str = <span class="string">`<span class="subst">$&#123;a&#125;</span>+<span class="subst">$&#123;b&#125;</span>=<span class="subst">$&#123;a+b&#125;</span>`</span>;</span><br><span class="line">str <span class="comment">// "20+30=50"</span></span><br></pre></td></tr></table></figure></li></ol><ol start="4"><li><p>解构赋值</p><p>数组</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> [a, b] = arr;</span><br><span class="line">a; <span class="comment">// 1</span></span><br><span class="line">b; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure><p>对象</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">k1</span>: <span class="string">'china'</span>, <span class="attr">k2</span>: <span class="string">'usa'</span>, <span class="attr">k3</span>: <span class="string">'japan'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> &#123;k1, k2, k3&#125; = obj;</span><br></pre></td></tr></table></figure></li></ol><ol start="5"><li><p>默认参数</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传参</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = x || <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">var</span> y = y || <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x=<span class="number">20</span>, y=<span class="number">30</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><ol start="6"><li><p>数组的扩展</p><p>展开运算符（spread）是三个点（<code>...</code>） </p><p>将一个数组转为用逗号分隔的参数序列</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]);</span><br><span class="line"><span class="comment">// 1 2 3 4</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>, </span><br><span class="line">  c: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">  ...obj1,</span><br><span class="line">  d: <span class="number">4</span>,</span><br><span class="line">  e: <span class="number">5</span>,</span><br><span class="line">  f: <span class="number">6</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 有木有觉得很像什么？Vuex里的...mapState  ...mapGetters  ...mapActions</span></span><br></pre></td></tr></table></figure></li></ol><ol start="7"><li><p>every() / some()</p><blockquote><p>every() 一假即假</p><p>some() 一真即真</p></blockquote></li></ol><ol start="8"><li><p>class/extends</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Function() / .prototype</span><br></pre></td></tr></table></figure></li></ol><ol start="9"><li><p>Promise</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 解决回调嵌套</span><br><span class="line">new Promise(function(resolve, reject)&#123;</span><br><span class="line">    if (true) &#123;</span><br><span class="line">        resolve(data);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        reject(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function()&#123;</span><br><span class="line">    // resolve</span><br><span class="line">&#125;, function()&#123;</span><br><span class="line">    // reject</span><br><span class="line">&#125;)</span><br><span class="line">.then(//同上)</span><br><span class="line">.catch(function()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://es6.ruanyifeng.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://es6.ruanyifeng.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+      
+    
+    </summary>
+    
+      <category term="web" scheme="http://gnbyj.cn/categories/web/"/>
+    
+    
+      <category term="es6" scheme="http://gnbyj.cn/tags/es6/"/>
+    
+  </entry>
   
   <entry>
     <title>axios</title>
@@ -38,35 +93,6 @@
     
     
       <category term="axios" scheme="http://gnbyj.cn/tags/axios/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6</title>
-    <link href="http://gnbyj.cn/2019/02/27/%5B2019-02-27%5DES6/"/>
-    <id>http://gnbyj.cn/2019/02/27/[2019-02-27]ES6/</id>
-    <published>2019-02-27T01:10:00.000Z</published>
-    <updated>2019-02-27T08:09:24.388Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">http://es6.ruanyifeng.com</a></p></blockquote><ol><li><h5 id="新的变量声明方式-let-const"><a href="#新的变量声明方式-let-const" class="headerlink" title="新的变量声明方式 let/const"></a>新的变量声明方式 let/const</h5><p>使用let来声明一个【值会被改变】的变量</p><p>使用const来声明一个【值不会被改变】的变量，也可以称之为常量</p></li><li><h5 id="箭头函数的使用"><a href="#箭头函数的使用" class="headerlink" title="箭头函数的使用"></a>箭头函数的使用</h5><p>箭头函数中，没有自己的this。如果你在箭头函数中使用了this，那么该this一定是最近外层的this。 </p><p>不能用call/apply/bind来改变this指向。 </p><blockquote><p>ES6 默认采用严格模式，this不会自动指向window对象</p></blockquote></li><li><h5 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h5><p>使用 <code></code> 将整个字符串包裹起来，而在其中使用 ${} 来包裹一个变量或者一个表达式。 </p><p>支持换行</p></li><li><p>数组的扩展</p><p>扩展运算符（spread）是三个点（<code>...</code>） </p><p>将一个数组转为用逗号分隔的参数序列</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]);</span><br><span class="line"><span class="comment">// 1 2 3 4</span></span><br></pre></td></tr></table></figure></li><li><p>every() / some()</p><blockquote><p>every() 一假即假</p><p>some() 一真即真</p></blockquote></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://es6.ruanyifeng.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://es6.ruanyifeng.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;
-      
-    
-    </summary>
-    
-      <category term="web" scheme="http://gnbyj.cn/categories/web/"/>
-    
-    
-      <category term="es6" scheme="http://gnbyj.cn/tags/es6/"/>
     
   </entry>
   
@@ -163,15 +189,17 @@
     <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DVue/"/>
     <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Vue/</id>
     <published>2019-02-26T09:00:00.000Z</published>
-    <updated>2019-02-27T07:42:48.768Z</updated>
+    <updated>2019-02-28T10:00:05.310Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 隐藏未编译的Mustache标签直到准备完毕</span><br><span class="line"><span class="selector-attr">[v-cloak]</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://juejin.im/post/59fa9257f265da43062a1b0e" target="_blank" rel="noopener">Vue 高频问题汇总</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://juejin.im/post/59fa9257f265da43062a1b0e" target="_blank" rel="noopener">Vue 高频问题汇总</a></p><hr><h3 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h3><blockquote><p>从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程。  </p></blockquote><h4 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h4><p>【创建】</p><ul><li>创建Vue空实例</li></ul><p>【初始化】</p><ul><li><code>init</code>过程中调用【<code>beforeCreate</code>】钩子函数；</li><li><p><code>init</code>完成之后，Vue实例被正式创建。【以上是默认操作】</p></li><li><p>调用【<code>created</code>】钩子函数，经行【自定义】的初始化操作；</p></li></ul><p>【编译模板】</p><ul><li><code>Has el option</code>/<code>Has template option</code></li><li>将data中的数据和模板编译生成render function</li><li>调用【<code>beforeMount</code>】钩子函数</li></ul><p>【挂载DOM】</p><ul><li>用 Virtual DOM 的<code>$el</code>替换掉<code>el</code>属性</li><li>调用【<code>mounted</code>】钩子函数，此时可以操作DOM</li></ul><p>【双向数据绑定】</p><ul><li>数据变化，此时会调用【<code>beforeUpdate</code>】钩子函数</li><li>Virtual DOM重新渲染并打补丁</li><li>页面更新后，调用【<code>updated</code>】钩子函数</li></ul><p>【销毁】</p><ul><li>触发vm.$destroy()后，调用【<code>beforeDestroy】</code>钩子函数</li><li>卸载watchers/子组件/事件监听</li><li>调用【<code>destroyed</code>】钩子函数</li><li>销毁Vue实例</li></ul><h4 id="白话复述："><a href="#白话复述：" class="headerlink" title="白话复述："></a>白话复述：</h4><blockquote><p>创建的对象一般都需要进行一系列初始化动作之后才可被使用；<br>自定义的初始化动作可以在<code>created</code>里定义，会被Vue调用执行；<br>初始化完成，将模板和数据结合在一起，编译成render函数，渲染出虚拟DOM；<br>将虚拟DOM挂载到el上，之后DOM操作可被使用，通过<code>mounted</code>钩子函数；<br>监听数据变化，重渲染页面（之前之后有两个钩子函数可供使用）；<br>销毁实例，卸载监听及子组件（之前之后有两个钩子函数可供使用）；</p></blockquote><h4 id="8个-4对-钩子函数："><a href="#8个-4对-钩子函数：" class="headerlink" title="8个/4对 钩子函数："></a>8个/4对 钩子函数：</h4><ul><li>实例创建阶段：【beforeCreate】/【created】</li><li>DOM挂载阶段：【beforeMount】/【mounted】</li><li>页面更新阶段：【beforeUpdate】/【updated】</li><li>实例销毁阶段：【beforeDestroy】/【destroyed】</li></ul><h4 id="虚拟DOM节点树"><a href="#虚拟DOM节点树" class="headerlink" title="虚拟DOM节点树"></a>虚拟DOM节点树</h4><p>Template –&gt; <code>compile</code> –&gt; render function –&gt; <code>render</code>  –&gt; 虚拟DOM Tree  –&gt; <code>create</code>  –&gt; 真实DOM</p><p><code>vdom</code>很好的将<code>dom</code>做了一层映射关系，将我们本需要直接操作<code>dom</code>的动作映射到了操作<code>vdom</code>，</p><p><code>vdom</code>上定义了关于真实<code>dom</code>的一些关键的信息，</p><p><code>vdom</code>完全是用<code>js</code>去实现，和宿主浏览器没有任何联系，</p><p><code>js</code>的执行速度快，操作<code>vdom</code>的效率和性能要比直接操作<code>dom</code>好很多。</p><hr><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 隐藏未编译的Mustache标签直到准备完毕</span><br><span class="line"><span class="selector-attr">[v-cloak]</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+        &lt;p&gt;&lt;a href=&quot;https://juejin.im/post/59fa9257f265da43062a1b0e&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vue 高频问题汇总&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Vue的生命周期&quot;&gt;&lt;a hre
       
     
     </summary>
@@ -247,6 +275,39 @@
   </entry>
   
   <entry>
+    <title>Windows解决端口占用问题</title>
+    <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DWindows%E7%B3%BB%E7%BB%9F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/"/>
+    <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Windows系统解决端口被占用/</id>
+    <published>2019-02-26T01:10:00.000Z</published>
+    <updated>2019-02-26T01:12:27.247Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>在dos下，输入<code>netstat -ano|findstr [port]</code>,查看端口使用情况</li><li>输入 <code>taskkill /pid [pid] /f</code> 停止端口占用</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;在dos下，输入&lt;code&gt;netstat -ano|findstr [port]&lt;/code&gt;,查看端口使用情况&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;taskkill /pid [pid] /f&lt;/code&gt; 停止端口占用&lt;/li&gt;
+&lt;/ol&gt;
+
+      
+    
+    </summary>
+    
+      <category term="common" scheme="http://gnbyj.cn/categories/common/"/>
+    
+    
+      <category term="web" scheme="http://gnbyj.cn/tags/web/"/>
+    
+      <category term="system" scheme="http://gnbyj.cn/tags/system/"/>
+    
+      <category term="port" scheme="http://gnbyj.cn/tags/port/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Vue组件</title>
     <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DVue%E7%BB%84%E4%BB%B6/"/>
     <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Vue组件/</id>
@@ -277,39 +338,6 @@
     
     
       <category term="Vue，web" scheme="http://gnbyj.cn/tags/Vue%EF%BC%8Cweb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows解决端口占用问题</title>
-    <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DWindows%E7%B3%BB%E7%BB%9F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/"/>
-    <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Windows系统解决端口被占用/</id>
-    <published>2019-02-26T01:10:00.000Z</published>
-    <updated>2019-02-26T01:12:27.247Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>在dos下，输入<code>netstat -ano|findstr [port]</code>,查看端口使用情况</li><li>输入 <code>taskkill /pid [pid] /f</code> 停止端口占用</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;在dos下，输入&lt;code&gt;netstat -ano|findstr [port]&lt;/code&gt;,查看端口使用情况&lt;/li&gt;
-&lt;li&gt;输入 &lt;code&gt;taskkill /pid [pid] /f&lt;/code&gt; 停止端口占用&lt;/li&gt;
-&lt;/ol&gt;
-
-      
-    
-    </summary>
-    
-      <category term="common" scheme="http://gnbyj.cn/categories/common/"/>
-    
-    
-      <category term="web" scheme="http://gnbyj.cn/tags/web/"/>
-    
-      <category term="system" scheme="http://gnbyj.cn/tags/system/"/>
-    
-      <category term="port" scheme="http://gnbyj.cn/tags/port/"/>
     
   </entry>
   
