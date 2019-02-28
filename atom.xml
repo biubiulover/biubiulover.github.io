@@ -275,39 +275,6 @@
   </entry>
   
   <entry>
-    <title>Windows解决端口占用问题</title>
-    <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DWindows%E7%B3%BB%E7%BB%9F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/"/>
-    <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Windows系统解决端口被占用/</id>
-    <published>2019-02-26T01:10:00.000Z</published>
-    <updated>2019-02-26T01:12:27.247Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>在dos下，输入<code>netstat -ano|findstr [port]</code>,查看端口使用情况</li><li>输入 <code>taskkill /pid [pid] /f</code> 停止端口占用</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;在dos下，输入&lt;code&gt;netstat -ano|findstr [port]&lt;/code&gt;,查看端口使用情况&lt;/li&gt;
-&lt;li&gt;输入 &lt;code&gt;taskkill /pid [pid] /f&lt;/code&gt; 停止端口占用&lt;/li&gt;
-&lt;/ol&gt;
-
-      
-    
-    </summary>
-    
-      <category term="common" scheme="http://gnbyj.cn/categories/common/"/>
-    
-    
-      <category term="web" scheme="http://gnbyj.cn/tags/web/"/>
-    
-      <category term="system" scheme="http://gnbyj.cn/tags/system/"/>
-    
-      <category term="port" scheme="http://gnbyj.cn/tags/port/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Vue组件</title>
     <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DVue%E7%BB%84%E4%BB%B6/"/>
     <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Vue组件/</id>
@@ -338,6 +305,39 @@
     
     
       <category term="Vue，web" scheme="http://gnbyj.cn/tags/Vue%EF%BC%8Cweb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows解决端口占用问题</title>
+    <link href="http://gnbyj.cn/2019/02/26/%5B2019-02-26%5DWindows%E7%B3%BB%E7%BB%9F%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/"/>
+    <id>http://gnbyj.cn/2019/02/26/[2019-02-26]Windows系统解决端口被占用/</id>
+    <published>2019-02-26T01:10:00.000Z</published>
+    <updated>2019-02-26T01:12:27.247Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>在dos下，输入<code>netstat -ano|findstr [port]</code>,查看端口使用情况</li><li>输入 <code>taskkill /pid [pid] /f</code> 停止端口占用</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;在dos下，输入&lt;code&gt;netstat -ano|findstr [port]&lt;/code&gt;,查看端口使用情况&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;taskkill /pid [pid] /f&lt;/code&gt; 停止端口占用&lt;/li&gt;
+&lt;/ol&gt;
+
+      
+    
+    </summary>
+    
+      <category term="common" scheme="http://gnbyj.cn/categories/common/"/>
+    
+    
+      <category term="web" scheme="http://gnbyj.cn/tags/web/"/>
+    
+      <category term="system" scheme="http://gnbyj.cn/tags/system/"/>
+    
+      <category term="port" scheme="http://gnbyj.cn/tags/port/"/>
     
   </entry>
   
