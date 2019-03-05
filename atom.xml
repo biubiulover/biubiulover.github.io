@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gnbyj.cn/"/>
-  <updated>2019-02-28T09:59:39.140Z</updated>
+  <updated>2019-03-05T08:56:37.918Z</updated>
   <id>http://gnbyj.cn/</id>
   
   <author>
@@ -15,6 +15,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git</title>
+    <link href="http://gnbyj.cn/2019/03/03/%5B2019-03-03%5Dgit/"/>
+    <id>http://gnbyj.cn/2019/03/03/[2019-03-03]git/</id>
+    <published>2019-03-03T04:10:00.000Z</published>
+    <updated>2019-03-05T08:56:37.918Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>在github新建库，github -&gt; new repository</li><li>copy [SSH]</li><li>本地代码根目录下，在bash中<code>git init</code>，初始化</li><li><code>vim .gitignore</code> 新增以及编写这个文件 <code>node_modules/</code></li><li><code>git add .</code> 将代码添加本地仓库</li><li><code>git commit -m &#39;first commit&#39;</code> 提交到本地仓库</li><li><code>git remote add origin [SSH]</code> 与远程地址关联</li><li><code>git push -u origin master</code> 提交到远程仓库master分支</li></ol><hr><p>撤销操作</p><p><code>git status</code> 查看add的文件</p><p><code>git reset HEAD</code> 上一次add里面的全部撤销</p><p><code>git reset HEAD [file]</code> 对某个文件进行撤销</p><p>如果只是执行了add操作，此时还没有提交，所以不存在HEAD版本，不能使用 git reset HEAD命令。</p><p>使用<code>git rm -r --cached .</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;在github新建库，github -&amp;gt; new repository&lt;/li&gt;
+&lt;li&gt;copy [SSH]&lt;/li&gt;
+&lt;li&gt;本地代码根目录下，在bash中&lt;code&gt;git init&lt;/code&gt;，初始化&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vim .gi
+      
+    
+    </summary>
+    
+      <category term="tools" scheme="http://gnbyj.cn/categories/tools/"/>
+    
+    
+      <category term="git" scheme="http://gnbyj.cn/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>codewars刷题</title>
+    <link href="http://gnbyj.cn/2019/03/02/%5B2019-03-02%5Dcodewars/"/>
+    <id>http://gnbyj.cn/2019/03/02/[2019-03-02]codewars/</id>
+    <published>2019-03-02T03:10:00.000Z</published>
+    <updated>2019-03-02T07:41:59.618Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><blockquote><p>Trolls are attacking your comment section!</p><p>A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat.</p><p>Your task is to write a function that takes a string and return a new string with all vowels removed.</p><p>For example, the string “This website is for losers LOL!” would become “Ths wbst s fr lsrs LL!”.</p><p>Note: for this kata <code>y</code> isn’t considered a vowel.</p></blockquote></li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my solution</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">disemvowel</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nstr = <span class="string">''</span>;</span><br><span class="line">  str.split(<span class="string">''</span>).forEach(<span class="function"><span class="params">x</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> chr = x.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span> (chr === <span class="string">'a'</span> || chr === <span class="string">'e'</span> || chr === <span class="string">'i'</span> || chr === <span class="string">'o'</span> || chr === <span class="string">'u'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    nstr += x;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> nstr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// best practice</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">disemvowel</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/[aeiou]/gi</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">disemvowel = <span class="function"><span class="params">str</span> =&gt;</span> str.replace(<span class="regexp">/[aeiou]/gi</span>, <span class="string">''</span>);</span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">disemvowel</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> vowels = [<span class="string">'a'</span>,<span class="string">'e'</span>,<span class="string">'i'</span>,<span class="string">'o'</span>,<span class="string">'u'</span>];</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).filter(<span class="function"><span class="params">chr</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> vowels.indexOf(chr.toLowerCase()) == <span class="number">-1</span>;</span><br><span class="line">    &#125;).join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="keyword">const</span> vowels = <span class="string">'aeiou'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">disemvowel</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>)</span><br><span class="line">    .filter(<span class="function"><span class="params">letter</span> =&gt;</span> !vowels.includes(letter.toLowerCase()))</span><br><span class="line">    .join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">disemvowel</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> vowels = [<span class="string">'a'</span>,<span class="string">'e'</span>,<span class="string">'i'</span>,<span class="string">'o'</span>,<span class="string">'u'</span>,<span class="string">'A'</span>,<span class="string">'E'</span>,<span class="string">'I'</span>,<span class="string">'O'</span>,<span class="string">'U'</span>];</span><br><span class="line">    vowels.map(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(v, <span class="string">'g'</span>);</span><br><span class="line">        str = str.replace(reg, <span class="string">''</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;Trolls are attacking your comment section!&lt;/p&gt;
+&lt;p&gt;A common way to deal with this situation is to remove all of the 
+      
+    
+    </summary>
+    
+      <category term="web" scheme="http://gnbyj.cn/categories/web/"/>
+    
+    
+      <category term="javascript" scheme="http://gnbyj.cn/tags/javascript/"/>
+    
+      <category term="codewars" scheme="http://gnbyj.cn/tags/codewars/"/>
+    
+      <category term="java" scheme="http://gnbyj.cn/tags/java/"/>
+    
+      <category term="python" scheme="http://gnbyj.cn/tags/python/"/>
+    
+      <category term="css" scheme="http://gnbyj.cn/tags/css/"/>
+    
+      <category term="sass" scheme="http://gnbyj.cn/tags/sass/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>梦想好物</title>
+    <link href="http://gnbyj.cn/2019/03/02/%5B2019-03-02%5D%E5%A5%BD%E7%89%A9%E5%BF%97/"/>
+    <id>http://gnbyj.cn/2019/03/02/[2019-03-02]好物志/</id>
+    <published>2019-03-02T03:10:00.000Z</published>
+    <updated>2019-03-02T03:12:32.356Z</updated>
+    
+    <content type="html"><![CDATA[<p>Concept2划船机</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Concept2划船机&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="life" scheme="http://gnbyj.cn/categories/life/"/>
+    
+    
+      <category term="健身" scheme="http://gnbyj.cn/tags/%E5%81%A5%E8%BA%AB/"/>
+    
+      <category term="好物" scheme="http://gnbyj.cn/tags/%E5%A5%BD%E7%89%A9/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack</title>
