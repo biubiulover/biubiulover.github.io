@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="codewars,javascript,java,python,css,sass," />
+  <meta name="keywords" content="javascript,codewars,java,python,css,sass," />
 
 
 
@@ -108,14 +108,14 @@
 
 
 <meta name="description" content="Trolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to write a functio">
-<meta name="keywords" content="codewars,javascript,java,python,css,sass">
+<meta name="keywords" content="javascript,codewars,java,python,css,sass">
 <meta property="og:type" content="article">
 <meta property="og:title" content="codewars刷题">
 <meta property="og:url" content="http://gnbyj.cn/2019/03/02/[2019-03-02]codewars/index.html">
 <meta property="og:site_name" content="BiuBiu">
 <meta property="og:description" content="Trolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to write a functio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T09:46:46.293Z">
+<meta property="og:updated_time" content="2019-03-13T14:38:13.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codewars刷题">
 <meta name="twitter:description" content="Trolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to write a functio">
@@ -497,6 +497,17 @@
 </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">digital_root</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(n &gt; <span class="number">10</span>)&#123;</span><br><span class="line">    n = <span class="built_in">String</span>(n).split(<span class="string">''</span>).reduce(<span class="function">(<span class="params">x,y</span>)=&gt;</span><span class="built_in">Number</span>(x)+<span class="built_in">Number</span>(y));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li><blockquote>
+<h5 id="Description-1"><a href="#Description-1" class="headerlink" title="Description:"></a>Description:</h5><p>Given a string of words, you need to find the highest scoring word.</p>
+<p>Each letter of a word scores points according to it’s position in the alphabet: <code>a = 1, b = 2, c = 3</code> etc.</p>
+<p>You need to return the highest scoring word as a string.</p>
+<p>If two words score the same, return the word that appears earliest in the original string.</p>
+<p>All letters will be lowercase and all inputs will be valid.</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">high</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//transform the input string into array &amp; define a string of alphabetical latin characters</span></span><br><span class="line">  <span class="keyword">var</span> arr = x.split(<span class="string">' '</span>);</span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span>;</span><br><span class="line">  <span class="comment">//Iterate through the array with input words to find the one with the greatest sum</span></span><br><span class="line">  <span class="keyword">var</span> newArr = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; word.length; i++) &#123;</span><br><span class="line">      sum += str.indexOf(word[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">//Return the word with the greatest sum</span></span><br><span class="line">  <span class="keyword">return</span> arr[newArr.indexOf(<span class="built_in">Math</span>.max(...newArr))];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">high</span>(<span class="params">s</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="keyword">as</span> = s.split(<span class="string">' '</span>).map(<span class="function"><span class="params">s</span>=&gt;</span>[...s].reduce(<span class="function">(<span class="params">a,b</span>)=&gt;</span>a+b.charCodeAt(<span class="number">0</span>)<span class="number">-96</span>,<span class="number">0</span>));</span><br><span class="line">  <span class="keyword">return</span> s.split(<span class="string">' '</span>)[<span class="keyword">as</span>.indexOf(<span class="built_in">Math</span>.max(...as))];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="keyword">const</span> &#123; compose, reduce, split &#125; = <span class="built_in">require</span>(<span class="string">'ramda'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> score = compose(</span><br><span class="line">  reduce(<span class="function">(<span class="params">r, v</span>) =&gt;</span> r + v.charCodeAt() - <span class="number">96</span>, <span class="number">0</span>),</span><br><span class="line">  split(<span class="string">''</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> high = compose(</span><br><span class="line">  reduce(<span class="function">(<span class="params">r, v</span>) =&gt;</span> score(v) &gt; score(r) ? v : r, <span class="string">''</span>),</span><br><span class="line">  split(<span class="string">' '</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -551,9 +562,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/codewars/" rel="tag"># codewars</a>
-          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/codewars/" rel="tag"># codewars</a>
           
             <a href="/tags/java/" rel="tag"># java</a>
           
@@ -574,8 +585,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/28/[2019-02-28]webpack/" rel="next" title="webpack">
-                <i class="fa fa-chevron-left"></i> webpack
+              <a href="/2019/03/02/[2019-03-02]好物志/" rel="next" title="梦想好物">
+                <i class="fa fa-chevron-left"></i> 梦想好物
               </a>
             
           </div>
@@ -584,8 +595,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/02/[2019-03-02]好物志/" rel="prev" title="梦想好物">
-                梦想好物 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/03/[2019-03-03]git/" rel="prev" title="git">
+                git <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -667,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +700,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -779,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">1.</span> <span class="nav-text">Examples:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">1.</span> <span class="nav-text">Examples:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Description-1"><span class="nav-number">1.0.2.</span> <span class="nav-text">Description:</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
